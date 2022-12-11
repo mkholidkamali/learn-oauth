@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+// Google Oauth
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/login/google', 'redirectToGoogle')->name('login.google');
+    Route::get('/login/google/callback', 'handleGoogleCallback')->name('login.google.callback');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

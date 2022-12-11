@@ -14,6 +14,8 @@
                                 <div class="col-md-6 offset-md-3">
                                     <a href="{{ route('login.google') }}" class="btn btn-danger btn-block">Login with
                                         Google</a>
+                                    <a href="{{ route('login.github') }}" class="btn btn-dark btn-block">Login with
+                                        Github</a>
                                 </div>
                             </div>
                         </form>

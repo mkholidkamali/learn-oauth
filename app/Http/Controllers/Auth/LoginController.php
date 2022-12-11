@@ -56,11 +56,23 @@ class LoginController extends Controller
 
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->stateless()->redirect();
+        return Socialite::driver('google')->redirect();
     }
     public function handleGoogleCallback()
     {
         $user = Socialite::driver('google')->stateless()->user();
+        dd($user);
+        $this->_registerOrLoginUser($user);
+        return redirect()->route('home');
+    }
+
+    public function redirectToGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+    public function handleGithubCallback()
+    {
+        $user = Socialite::driver('github')->stateless()->user();
         $this->_registerOrLoginUser($user);
         return redirect()->route('home');
     }

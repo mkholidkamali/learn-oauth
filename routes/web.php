@@ -27,4 +27,10 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/login/google/callback', 'handleGoogleCallback')->name('login.google.callback');
 });
 
+// Github Oauth
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/login/github', 'redirectToGithub')->name('login.github');
+    Route::get('/login/github/callback', 'handleGithubCallback')->name('login.github.callback');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
